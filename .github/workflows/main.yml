@@ -1,0 +1,26 @@
+# .github/workflows/main.yml
+
+name: Correr Interprete Pascal
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test_interpreter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Código
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: Ejecutar Test del Interprete
+        run: |
+          # El entorno de GitHub es limpio y ejecutará el código sin interferencias
+          python run_test.py
